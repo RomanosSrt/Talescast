@@ -1,0 +1,69 @@
+package com.unipi.talescast;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.Toast;
+
+import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Stories extends AppCompatActivity {
+    DatabaseReference dbRef;
+    RecyclerView recyclerView;
+    List<CardModel> cardItems;
+    CardAdapter adapter;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_stories);
+
+        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+
+        cardItems = new ArrayList<>();
+        adapter = new CardAdapter(this, cardItems, new CardAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(CardModel item) {
+                Intent intent = new Intent(Stories.this, PlayActivity.class);
+                intent.putExtra("card", item);
+                startActivity(intent);
+            }
+        });
+        recyclerView.setAdapter(adapter);
+
+        dbRef = FirebaseDatabase.getInstance().getReference("cards");
+
+        dbRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                cardItems.clear();
+                for (DataSnapshot snap : snapshot.getChildren()) {
+                    CardModel item = snap.getValue(CardModel.class);
+                    cardItems.add(item);
+                }
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(Stories.this, "Error loading data.", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+}

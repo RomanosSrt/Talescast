@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "321459247143",
+    "project_id": "talescastdb",
+    "storage_bucket": "talescastdb.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:321459247143:android:7b6031fda117d3ab319602",
+        "android_client_info": {
+          "package_name": "com.unipi.talescast"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4fjcUvzWIXql41nNZtCoBaJEIZdhKHA0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

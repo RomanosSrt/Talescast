@@ -6,13 +6,16 @@ public class CardModel implements Serializable {
     public String title;
     public String description;
     public String image;
+    public String story;
+
 
     public CardModel() {}
 
-    public CardModel(String title, String description, String image) {
+    public CardModel(String title, String description, String image, String story) {
         this.title = title;
         this.description = description;
         this.image = image;
+        this.story = story;
     }
 
 

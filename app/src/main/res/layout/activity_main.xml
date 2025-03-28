@@ -6,14 +6,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:alpha="1"
-    android:background="@drawable/castle2"
+
     tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/backgroundImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/mainbg"
+        android:adjustViewBounds="true" />
 
     <TextView
         android:id="@+id/titleTextView"
-        android:layout_width="453dp"
-        android:layout_height="74dp"
-        android:layout_margin="10px"
+        android:layout_width="301dp"
+        android:layout_height="131dp"
+        android:layout_margin="10dp"
         android:fontFamily="cursive"
         android:shadowColor="#891C1C"
         android:shadowDx="3"
@@ -32,21 +40,23 @@
 
     <EditText
         android:id="@+id/usernameEditText"
-        android:layout_width="330dp"
-        android:layout_height="70dp"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
         android:layout_margin="20dp"
         android:background="#D4F0F0F0"
         android:ems="10"
         android:hint="Email"
         android:inputType="textEmailAddress"
         android:textAlignment="center"
-        android:textSize="24sp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.499"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.469" />
+        app:layout_constraintVertical_bias="0.499" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -86,7 +96,7 @@
             android:id="@+id/signInButton"
             android:layout_width="170dp"
             android:layout_height="70dp"
-            android:layout_margin="2px"
+            android:layout_margin="2dp"
             android:backgroundTint="#891C1C"
             android:fontFamily="cursive"
             android:onClick="signIn"
@@ -111,14 +121,16 @@
 
     <EditText
         android:id="@+id/passwordEditText"
-        android:layout_width="330dp"
-        android:layout_height="70dp"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
         android:background="#D4F0F0F0"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
         android:textAlignment="center"
-        android:textSize="24sp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
@@ -130,7 +142,7 @@
         android:id="@+id/textViewIntro"
         android:layout_width="422dp"
         android:layout_height="83dp"
-        android:layout_margin="10px"
+        android:layout_margin="10dp"
         android:background="@color/white"
         android:backgroundTint="#4EF0F0F0"
         android:fontFamily="serif"

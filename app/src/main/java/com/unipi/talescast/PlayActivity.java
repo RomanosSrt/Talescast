@@ -2,10 +2,16 @@ package com.unipi.talescast;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.speech.tts.TextToSpeech;
 import android.speech.tts.UtteranceProgressListener;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.StyleSpan;
 import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
@@ -23,15 +29,11 @@ public class PlayActivity extends AppCompatActivity {
     CardModel cardSelected;
     TextToSpeech narrator;
     Button playButton;
+    TextView titleText,lyrics;
     SeekBar seekBar;
     boolean stop = false;
     int playFrom;
-    Handler handler = new Handler();
-    Runnable progressLoop;
     String[] storyTable;
-    int progress = 0;
-    int maxProgress;
-    final int INTERVAL = 2000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,15 +42,16 @@ public class PlayActivity extends AppCompatActivity {
         setContentView(R.layout.activity_play);
         seekBar = findViewById(R.id.seekBar);
         playButton = findViewById(R.id.playButton);
-        TextView titleText = findViewById(R.id.titleText);
+        titleText = findViewById(R.id.titleText);
+        lyrics = findViewById(R.id.storyText);
         cardSelected = (CardModel) getIntent().getSerializableExtra("card");
 
 
         if (cardSelected != null) {
-            storyTable = cardSelected.story.trim().split("(?<=[,.?!])\\s+");
+            storyTable = cardSelected.story.trim().split("(?<=[:,.?!])\\s+");
             titleText.setText(cardSelected.title);
-            seekBar.setMax(storyTable.length);
-            maxProgress = seekBar.getMax();
+            lyrics.setText(cardSelected.story);
+            seekBar.setMax(storyTable.length-1);
             setImage(cardSelected.image);
         } else {
             finish();
@@ -67,14 +70,15 @@ public class PlayActivity extends AppCompatActivity {
         playButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (seekBar.getProgress() == seekBar.getMax())
+                    seekBar.setProgress(0);
+
                 if (!stop) {
                     narrate();
                 }
                 else {
                     narrator.stop();
-                    narrator.shutdown();
                 }
-
                 stop = !stop;
             }
         });
@@ -85,12 +89,21 @@ public class PlayActivity extends AppCompatActivity {
                 int index = Integer.parseInt(utteranceId.split("_")[1]);
                 runOnUiThread(() -> {
                     seekBar.setProgress(index);
-                    titleText.setText(String.valueOf(index + 1));
+                    int findLyrics = lyrics.getText().toString().indexOf(storyTable[index]);
+                    SpannableString spannable = new SpannableString(lyrics.getText());
+                    spannable.setSpan(new ForegroundColorSpan(Color.parseColor("#aaaaaa")), 0, lyrics.getText().length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    spannable.setSpan(new StyleSpan(Typeface.NORMAL), 0, lyrics.getText().length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+                    spannable.setSpan(new ForegroundColorSpan(Color.parseColor("#FFFFFF")), findLyrics, findLyrics+storyTable[index].length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    spannable.setSpan(new StyleSpan(Typeface.BOLD), findLyrics, findLyrics+storyTable[index].length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    lyrics.setText(spannable);
                 });
             }
 
             @Override
-            public void onDone(String utteranceId) {}
+            public void onDone(String utteranceId) {
+
+            }
 
             @Override
             public void onError(String utteranceId) {}
@@ -101,24 +114,30 @@ public class PlayActivity extends AppCompatActivity {
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-
+                if (i == seekBar.getMax()) {
+                    new Handler().postDelayed(() -> {
+                        Spannable spannable = new SpannableString(lyrics.getText());
+                        spannable.setSpan(
+                                new ForegroundColorSpan(Color.BLACK),
+                                0,
+                                spannable.length(),
+                                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                        );
+                        lyrics.setText(spannable);
+                    }, 5000);
+                }
             }
 
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
                 narrator.stop();
-                narrator.shutdown();
             }
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-                playFrom = seekBar.getProgress();
-//                int continueFrom = cardSelected.story.indexOf(storyTable[playFrom]);
-                String restOfTheStory = cardSelected.story.substring(playFrom);
-                if (!stop) {
-//                    trackTale();
-                    narrator.speak(restOfTheStory, TextToSpeech.QUEUE_FLUSH, null);
-                }
+                if (stop)
+                    narrate();
+
             }
         });
     }

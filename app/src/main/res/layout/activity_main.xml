@@ -13,14 +13,16 @@
         android:id="@+id/backgroundImage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:adjustViewBounds="true"
         android:scaleType="centerCrop"
-        android:src="@drawable/mainbg"
-        android:adjustViewBounds="true" />
+        android:src="@drawable/castle"
+        tools:layout_editor_absoluteX="-5dp"
+        tools:layout_editor_absoluteY="-16dp" />
 
     <TextView
         android:id="@+id/titleTextView"
-        android:layout_width="301dp"
-        android:layout_height="131dp"
+        android:layout_width="347dp"
+        android:layout_height="129dp"
         android:layout_margin="10dp"
         android:fontFamily="cursive"
         android:shadowColor="#891C1C"
@@ -29,7 +31,7 @@
         android:shadowRadius="@dimen/material_emphasis_disabled"
         android:text="Grimm Brothers Tales"
         android:textAlignment="center"
-        android:textColor="#891C1C"
+        android:textColor="#A20B0B"
         android:textSize="48sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,6 +45,7 @@
         android:layout_width="200dp"
         android:layout_height="50dp"
         android:layout_margin="20dp"
+        android:alpha="0.7"
         android:background="#D4F0F0F0"
         android:ems="10"
         android:hint="Email"
@@ -123,6 +126,7 @@
         android:id="@+id/passwordEditText"
         android:layout_width="200dp"
         android:layout_height="50dp"
+        android:alpha="0.7"
         android:background="#D4F0F0F0"
         android:ems="10"
         android:hint="Password"
@@ -133,24 +137,26 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/usernameEditText"
-        app:layout_constraintVertical_bias="0.346" />
+        app:layout_constraintVertical_bias="0.351" />
 
     <TextView
         android:id="@+id/textViewIntro"
-        android:layout_width="422dp"
-        android:layout_height="83dp"
+        android:layout_width="357dp"
+        android:layout_height="64dp"
         android:layout_margin="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:background="@color/white"
         android:backgroundTint="#4EF0F0F0"
         android:fontFamily="serif"
-        android:text="Please enter your e-mail and password to Sign in "
+        android:text="Please enter your e-mail and password to Sign up or Sign in "
         android:textAlignment="center"
         android:textColor="#000000"
         android:textColorLink="#FFFFFF"
-        android:textSize="24sp"
+        android:textSize="20sp"
         android:textStyle="normal|bold"
         app:layout_constraintBottom_toTopOf="@+id/usernameEditText"
         app:layout_constraintEnd_toEndOf="parent"
@@ -158,6 +164,30 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleTextView"
         app:layout_constraintVertical_bias="0.611" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="53dp"
+        android:layout_height="46dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/backgroundImage"
+        app:layout_constraintHorizontal_bias="0.136"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.499"
+        app:srcCompat="@drawable/email" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="50dp"
+        android:layout_height="45dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.135"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.616"
+        app:srcCompat="@drawable/padlock" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

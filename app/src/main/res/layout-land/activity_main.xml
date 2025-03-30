@@ -9,6 +9,7 @@
     tools:context=".MainActivity">
 
     <ImageView
+        android:contentDescription="@string/background_image"
         android:id="@+id/backgroundImage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -158,6 +159,7 @@
         app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
 
     <ImageView
+        android:contentDescription="@string/image_icon"
         android:id="@+id/email_icon"
         android:layout_width="53dp"
         android:layout_height="45dp"
@@ -171,6 +173,7 @@
         app:srcCompat="@drawable/email" />
 
     <ImageView
+        android:contentDescription="@string/image_icon"
         android:id="@+id/password_icon"
         android:layout_width="54dp"
         android:layout_height="48dp"

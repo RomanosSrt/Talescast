@@ -29,4 +29,7 @@
     <string name="times_each_tale_was_read">📖 Times Each Tale Was Read</string>
     <string name="background_image">background Image</string>
     <string name="analytics_btn">analytics btn</string>
+    <string name="choose_from_our_story_collection">Choose from our story collection.</string>
+    <string name="image_used_as_frame">Image used as frame</string>
+    <string name="image_icon">image icon</string>
 </resources>

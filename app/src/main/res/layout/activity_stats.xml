@@ -8,6 +8,7 @@
     tools:context=".Stats">
 
     <ImageView
+        android:contentDescription="@string/background_image"
         android:id="@+id/bluebg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

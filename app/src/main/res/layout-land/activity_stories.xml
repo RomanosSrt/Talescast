@@ -9,6 +9,7 @@
     tools:context=".Stories">
 
     <ImageView
+        android:contentDescription="@string/background_image"
         android:id="@+id/backgroundImage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -30,11 +31,11 @@
 
             <TextView
                 android:id="@+id/screenTitle"
-                android:layout_width="908dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:fontFamily="cursive"
-                android:text="Tales"
+                android:text="@string/tales"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="30sp"
@@ -47,7 +48,7 @@
                 android:background="@android:color/transparent"
                 android:onClick="showStats"
                 android:src="@drawable/statsbtn"
-                android:contentDescription="User stats"
+                android:contentDescription="@string/analytics_btn"
                 android:scaleType="fitXY" />
         </LinearLayout>
 
@@ -55,7 +56,7 @@
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="23dp"
-            android:text="Choose from our story collection."
+            android:text="@string/choose_from_our_story_collection"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold" />

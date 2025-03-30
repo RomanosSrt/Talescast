@@ -9,6 +9,7 @@
     tools:context=".PlayActivity">
 
     <ImageView
+        android:contentDescription="@string/background_image"
         android:id="@+id/backgroundImage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -46,6 +47,7 @@
 
 
                 <ImageView
+                    android:contentDescription="@string/image_used_as_frame"
                     android:id="@+id/imageFrame"
                     android:layout_width="344dp"
                     android:layout_height="496dp"
@@ -60,6 +62,7 @@
                     app:srcCompat="@drawable/frame1" />
 
                 <ImageView
+                    android:contentDescription="@string/tales"
                     android:id="@+id/taleImage"
                     android:layout_width="300dp"
                     android:layout_height="300dp"

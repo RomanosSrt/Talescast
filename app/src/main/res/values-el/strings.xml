@@ -20,4 +20,5 @@
     <string name="tale_error">Κάποιο σφάλμα προέκυψε με την ιστορία σας.</string>
     <string name="credentials_error">Κάποιο σφάλμα προέκυψε με τα στοιχεία σας.</string>
     <string name="data_error">Σφάλμα φόρτωσης δεδομένων.</string>
+    <string name="year_written">Γράφτηκε το:</string>
 </resources>

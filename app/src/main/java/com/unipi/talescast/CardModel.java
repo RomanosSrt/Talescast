@@ -4,16 +4,16 @@ import java.io.Serializable;
 
 public class CardModel implements Serializable {
     public String title;
-    public String description;
+    public String year;
     public String image;
     public String story;
 
 
     public CardModel() {}
 
-    public CardModel(String title, String description, String image, String story) {
+    public CardModel(String title, String year, String image, String story) {
         this.title = title;
-        this.description = description;
+        this.year = year;
         this.image = image;
         this.story = story;
     }

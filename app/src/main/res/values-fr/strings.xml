@@ -20,4 +20,5 @@
     <string name="tale_error">Une erreur s\'est produite avec votre conte.</string>
     <string name="credentials_error">Une erreur s\'est produite avec vos identifiants.</string>
     <string name="data_error">Erreur de chargement des données.</string>
+    <string name="year_written">Écrit en:</string>
 </resources>

@@ -22,4 +22,5 @@
     <string name="data_error">Error loading data.</string>
     <string name="play_pause" translatable="false">Play/Pause</string>
     <string name="produced_by">Created by students: CHARIDIS MARIOS MPPL2336 &amp; SARANTIDIS ROMANOS MPPL2327</string>
+    <string name="year_written">"Year written: "</string>
 </resources>

@@ -37,7 +37,7 @@ import java.util.Map;
 public class PlayActivity extends AppCompatActivity {
     private CardModel cardSelected;
     private TextToSpeech narrator;
-    private TextView lyrics;
+    private TextView lyrics, year;
     private SeekBar seekBar;
     private boolean stop = false;
     private String[] storyTable;
@@ -55,6 +55,7 @@ public class PlayActivity extends AppCompatActivity {
         ImageButton playButton = findViewById(R.id.playButton);
         TextView titleText = findViewById(R.id.titleText);
         lyrics = findViewById(R.id.storyText);
+        year = findViewById(R.id.yeartextView);
         cardSelected = (CardModel) getIntent().getSerializableExtra("card");
 
         if (creds.getCurrentUser() != null)
@@ -74,6 +75,8 @@ public class PlayActivity extends AppCompatActivity {
             lyrics.setText(cardSelected.story);
             seekBar.setMax(storyTable.length-1);
             setImage(cardSelected.image);
+            String buffer = getString(R.string.year_written) + cardSelected.year;
+            year.setText(buffer);
         } else {
             Toast.makeText(this, getString(R.string.tale_error), Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(PlayActivity.this, Stories.class);

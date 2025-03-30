@@ -100,15 +100,15 @@
                 android:progressTint="@color/white"
                 android:thumbTint="@color/white" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/playButton"
-                android:layout_width="177dp"
-                android:layout_height="59dp"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:layout_marginTop="15dp"
                 android:text="Play/Pause"
                 android:textSize="16sp"
-                app:icon="@drawable/lamp"
-                app:iconSize="24dp" />
+                android:scaleType="fitXY"
+                android:background="@drawable/play" />
 
             <TextView
                 android:id="@+id/storyText"

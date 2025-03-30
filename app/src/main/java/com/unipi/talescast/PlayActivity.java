@@ -15,6 +15,7 @@ import android.text.style.ForegroundColorSpan;
 import android.text.style.StyleSpan;
 import android.util.Base64;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -22,6 +23,7 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -50,7 +52,7 @@ public class PlayActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_play);
         seekBar = findViewById(R.id.seekBar);
-        Button playButton = findViewById(R.id.playButton);
+        ImageButton playButton = findViewById(R.id.playButton);
         TextView titleText = findViewById(R.id.titleText);
         lyrics = findViewById(R.id.storyText);
         cardSelected = (CardModel) getIntent().getSerializableExtra("card");
@@ -89,12 +91,13 @@ public class PlayActivity extends AppCompatActivity {
         playButton.setOnClickListener(view -> {
             if (seekBar.getProgress() == seekBar.getMax())
                 seekBar.setProgress(0);
-
             if (!stop) {
                 narrate();
+                playButton.setBackground(ContextCompat.getDrawable(this, R.drawable.pause));
             }
             else {
                 narrator.stop();
+                playButton.setBackground(ContextCompat.getDrawable(this, R.drawable.play));
             }
             stop = !stop;
         });
@@ -116,9 +119,7 @@ public class PlayActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onDone(String utteranceId) {
-
-            }
+            public void onDone(String utteranceId) {}
 
             @Override
             public void onError(String utteranceId) {}
@@ -142,6 +143,7 @@ public class PlayActivity extends AppCompatActivity {
                     }, 5000);
                     registerEvent(cardSelected.title, "listenedTales");
                     db.child("users").child("user_"+userId).child("lastPlayed").setValue(cardSelected.title);
+                    playButton.setBackground(ContextCompat.getDrawable(PlayActivity.this, R.drawable.play));
                 }
             }
 

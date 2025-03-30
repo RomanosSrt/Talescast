@@ -8,10 +8,12 @@
     android:background="@drawable/mainbg"
     tools:context=".Stories">
 
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
-        android:layout_width="330dp"
-        android:layout_height="600dp"
+        android:layout_width="343dp"
+        android:layout_height="543dp"
         android:background="#325250"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -1,109 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/mainbg"
-    android:orientation="vertical"
-    android:padding="16dp"
     tools:context=".Stories">
 
-    <!-- Top Buttons Section -->
+    <!-- Background Image -->
+    <ImageView
+        android:id="@+id/backgroundImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/mainbg_land"
+        android:alpha="0.2"/>
 
-
+    <!-- Foreground content -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:gravity="end"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
 
-        <TextView
-            android:id="@+id/screenTitle"
+        <!-- Top bar -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginLeft="48dp"
-            android:layout_marginBottom="10dp"
-            android:layout_weight="1"
-            android:fontFamily="cursive"
-            android:text="Tales"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="34sp"
-            android:textStyle="bold" />
+            android:layout_marginTop="10dp"
+            android:gravity="end"
+            android:orientation="horizontal">
 
-        <ImageButton
-            android:id="@+id/myImageButton"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:contentDescription="User stats"
-            android:background="@android:color/transparent"
-            android:onClick="showStats"
-            android:scaleType="fitXY"
-            android:src="@drawable/statsbtn" />
+            <TextView
+                android:id="@+id/screenTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="cursive"
+                android:text="Tales"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="34sp"
+                android:textStyle="bold" />
 
-        <!-- Optional text button -->
-    </LinearLayout>
+            <ImageButton
+                android:id="@+id/myImageButton"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@android:color/transparent"
+                android:onClick="showStats"
+                android:src="@drawable/statsbtn"
+                android:contentDescription="User stats"
+                android:scaleType="fitXY" />
+        </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="end"
-        android:orientation="horizontal">
-        <!-- Image button -->
-
+        <!-- Subtitle -->
         <TextView
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:text="Choose from our story collection."
             android:textColor="@color/white"
-            android:textSize="20sp"
             android:textStyle="bold" />
 
+        <!-- RecyclerView with background image -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                android:background="@color/ic_launcher_background" />
+        </FrameLayout>
+
+        <!-- Footer -->
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="More stories to come..."
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold" />
     </LinearLayout>
-
-    <!-- Optional dragon image -->
-
-    <!-- RecyclerView section with background bean image -->
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:layout_weight="1">
-
-        <ImageView
-            android:id="@+id/imageBean"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:alpha="0.1"
-            android:scaleType="centerCrop"
-            android:src="@drawable/bean" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/ic_launcher_background"
-            android:padding="10dp" />
-    </FrameLayout>
-
-    <!-- Footer Text -->
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="8dp"
-        android:text="More stories to come..."
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        android:textStyle="bold" />
-</LinearLayout>
+</FrameLayout>

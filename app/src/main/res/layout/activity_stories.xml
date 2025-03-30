@@ -1,17 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/mainbg"
-    android:orientation="vertical"
-    android:padding="16dp"
     tools:context=".Stories">
 
-    <!-- Top Buttons Section -->
+    <ImageView
+        android:id="@+id/backgroundImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/mainbg"
+        android:alpha="0.2" />
 
+    <LinearLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -35,7 +44,6 @@
             android:textSize="48sp"
             android:textStyle="bold" />
 
-        <!-- Optional text button -->
     </LinearLayout>
 
     <LinearLayout
@@ -68,9 +76,6 @@
             android:src="@drawable/statsbtn" />
     </LinearLayout>
 
-    <!-- Optional dragon image -->
-
-    <!-- RecyclerView section with background bean image -->
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -94,7 +99,6 @@
             android:padding="10dp" />
     </FrameLayout>
 
-    <!-- Footer Text -->
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -107,3 +111,4 @@
         android:textColor="#FFFFFF"
         android:textStyle="bold" />
 </LinearLayout>
+</FrameLayout>

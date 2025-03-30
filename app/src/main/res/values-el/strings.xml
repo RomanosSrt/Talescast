@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Talescast</string>
+    <string name="produced_by"><![CDATA[Μια εργασία από τους φοιτητές:\n ΣΑΡΑΝΤΙΔΗ ΡΩΜΑΝΟ ΜΠΠΛ2327 & \n ΧΑΡΙΔΗ ΜΑΡΙΟ ΜΠΠΛ2336]]></string>
+    <string name="main_title">Ιστορίες των Αδερφών Γκριμμ</string>
+    <string name="castle">Κάστρο</string>
+    <string name="main_instructions">Εισάγετε email και κωδικό για να συνδεθείτε ή να εγγραφείτε</string>
+    <string name="password">Κωδικός</string>
+    <string name="sign_in">Σύνδεση</string>
+    <string name="sign_up">Εγγραφή</string>
+    <string name="tales">Ιστορίες</string>
+    <string name="choose_story">Επιλέξτε από την συλλογή.</string>
+    <string name="more_to_come">Σύντομα περισσότερες ιστορίες...</string>
+    <string name="signing_in_error">Σφάλμα κατά την σύνδεσή σας. Ελέγξτε την σύνδεση δικτύου σας.</string>
+    <string name="error">Σφάλμα</string>
+    <string name="sign_in_error">Σφάλμα σύνδεσης!</string>
+    <string name="valid_email_password">Παρακαλώ εισάγετε έναν έγκυρο συνδυασμό email-κωδικού.</string>
+    <string name="sign_up_error">Σφάλμα εγγραφής!</string>
+    <string name="signing_up_error">Σφάλμα κατά την εγγραφή σας. Ελέγξτε την σύνδεση δικτύου σας.</string>
+    <string name="tale_error">Κάποιο σφάλμα προέκυψε με την ιστορία σας.</string>
+    <string name="credentials_error">Κάποιο σφάλμα προέκυψε με τα στοιχεία σας.</string>
+    <string name="data_error">Σφάλμα φόρτωσης δεδομένων.</string>
+    <string name="year_written">Γράφτηκε το:</string>
+    <string name="your_listening_stats">Τα στατιστικά σας</string>
+    <string name="last_played">Τελευταία αναπαραγωγή: -</string>
+    <string name="times_each_tale_was_played">🎧 Αναπαραγωγές ανά παραμύθι</string>
+    <string name="times_each_tale_was_read">📖 Αναγνώσεις ανά παραμύθι</string>
+</resources>

@@ -45,7 +45,6 @@
                 android:layout_height="491dp"
                 android:layout_centerInParent="true">
 
-                <!-- Background Frame -->
 
                 <ImageView
                     android:id="@+id/imageFrame"
@@ -79,12 +78,11 @@
 
             <TextView
                 android:id="@+id/titleText"
-                android:layout_width="359dp"
-                android:layout_height="57dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:layout_marginBottom="12dp"
                 android:fontFamily="cursive"
-                android:text="Title Here"
                 android:textAlignment="center"
                 android:textColor="#F4F4F4"
                 android:textSize="34sp"
@@ -100,15 +98,26 @@
                 android:progressTint="@color/white"
                 android:thumbTint="@color/white" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/playButton"
-                android:layout_width="177dp"
-                android:layout_height="59dp"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:layout_marginTop="15dp"
-                android:text="Play/Pause"
                 android:textSize="16sp"
-                app:icon="@drawable/lamp"
-                app:iconSize="24dp" />
+                android:scaleType="fitXY"
+                android:contentDescription="@string/play_pause"
+                android:background="@drawable/play" />
+
+            <TextView
+                android:id="@+id/yeartextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/storyText"
@@ -118,7 +127,6 @@
                 android:background="@color/material_dynamic_secondary20"
                 android:lineSpacingExtra="4dp"
                 android:padding="16dp"
-                android:text="Πες μου μια ιστορία..."
                 android:textColor="@android:color/darker_gray"
                 android:textSize="18sp" />
 

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Talescast</string>
+    <string name="produced_by">Créé par des étudiants: CHARIDIS MARIOS MPPL2336 &amp; SARANTIDIS ROMANOS MPPL2327</string>
+    <string name="castle">Château</string>
+    <string name="main_title">Contes des frères Grimm</string>
+    <string name="sign_up">S\'inscrire</string>
+    <string name="sign_in">Se connecter</string>
+    <string name="password">Mot de passe</string>
+    <string name="main_instructions">Veuillez entrer votre e-mail et votre mot de passe pour vous inscrire ou vous connecter</string>
+    <string name="tales">Contes</string>
+    <string name="choose_story">Choisissez parmi notre collection d\'histoires.</string>
+    <string name="more_to_come">D\'autres histoires arrivent...</string>
+    <string name="signing_in_error">Erreur lors de la connexion. Veuillez vérifier votre connexion Internet.</string>
+    <string name="error">Erreur</string>
+    <string name="sign_in_error">Erreur de connexion !</string>
+    <string name="valid_email_password">Veuillez fournir une paire e-mail/mot de passe valide.</string>
+    <string name="sign_up_error">Erreur lors de l\'inscription !</string>
+    <string name="signing_up_error">Erreur lors de l\'inscription. Veuillez vérifier votre connexion Internet.</string>
+    <string name="tale_error">Une erreur s\'est produite avec votre conte.</string>
+    <string name="credentials_error">Une erreur s\'est produite avec vos identifiants.</string>
+    <string name="data_error">Erreur de chargement des données.</string>
+    <string name="year_written">Écrit en:</string>
+    <string name="your_listening_stats">Votre statistiques</string>
+    <string name="last_played">Dernier joué: -</string>
+    <string name="times_each_tale_was_played">🎧 Lectures par conte de fées</string>
+    <string name="times_each_tale_was_read">📖 Lectures par conte de fées</string>
+</resources>

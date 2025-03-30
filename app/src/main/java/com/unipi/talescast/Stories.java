@@ -65,7 +65,7 @@ public class Stories extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(Stories.this, "Error loading data.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Stories.this, getString(R.string.data_error), Toast.LENGTH_SHORT).show();
             }
         });
     }

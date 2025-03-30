@@ -15,6 +15,7 @@ import android.text.style.ForegroundColorSpan;
 import android.text.style.StyleSpan;
 import android.util.Base64;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -22,6 +23,7 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -35,7 +37,7 @@ import java.util.Map;
 public class PlayActivity extends AppCompatActivity {
     private CardModel cardSelected;
     private TextToSpeech narrator;
-    private TextView lyrics;
+    private TextView lyrics, year;
     private SeekBar seekBar;
     private boolean stop = false;
     private String[] storyTable;
@@ -50,15 +52,16 @@ public class PlayActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_play);
         seekBar = findViewById(R.id.seekBar);
-        Button playButton = findViewById(R.id.playButton);
+        ImageButton playButton = findViewById(R.id.playButton);
         TextView titleText = findViewById(R.id.titleText);
         lyrics = findViewById(R.id.storyText);
+        year = findViewById(R.id.yeartextView);
         cardSelected = (CardModel) getIntent().getSerializableExtra("card");
 
         if (creds.getCurrentUser() != null)
             userId = creds.getCurrentUser().getUid();
         else {
-            Toast.makeText(this, "Something went wrong with your credentials.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.credentials_error), Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(PlayActivity.this, MainActivity.class);
             startActivity(intent);
         }
@@ -72,8 +75,10 @@ public class PlayActivity extends AppCompatActivity {
             lyrics.setText(cardSelected.story);
             seekBar.setMax(storyTable.length-1);
             setImage(cardSelected.image);
+            String buffer = getString(R.string.year_written) + cardSelected.year;
+            year.setText(buffer);
         } else {
-            Toast.makeText(this, "Something went wrong with your tale.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.tale_error), Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(PlayActivity.this, Stories.class);
             startActivity(intent);
         }
@@ -89,12 +94,13 @@ public class PlayActivity extends AppCompatActivity {
         playButton.setOnClickListener(view -> {
             if (seekBar.getProgress() == seekBar.getMax())
                 seekBar.setProgress(0);
-
             if (!stop) {
                 narrate();
+                playButton.setBackground(ContextCompat.getDrawable(this, R.drawable.pause));
             }
             else {
                 narrator.stop();
+                playButton.setBackground(ContextCompat.getDrawable(this, R.drawable.play));
             }
             stop = !stop;
         });
@@ -116,9 +122,7 @@ public class PlayActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onDone(String utteranceId) {
-
-            }
+            public void onDone(String utteranceId) {}
 
             @Override
             public void onError(String utteranceId) {}
@@ -142,6 +146,7 @@ public class PlayActivity extends AppCompatActivity {
                     }, 5000);
                     registerEvent(cardSelected.title, "listenedTales");
                     db.child("users").child("user_"+userId).child("lastPlayed").setValue(cardSelected.title);
+                    playButton.setBackground(ContextCompat.getDrawable(PlayActivity.this, R.drawable.play));
                 }
             }
 
@@ -192,5 +197,4 @@ public class PlayActivity extends AppCompatActivity {
         data.put("count", ServerValue.increment(1));
         db.child("users").child("user_"+userId).child(eventName).child(taleTitle).updateChildren(data);
     }
-
 }

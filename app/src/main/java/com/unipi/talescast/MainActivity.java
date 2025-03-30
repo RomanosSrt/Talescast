@@ -46,16 +46,16 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
-                                showMessage("Success!", "Welcome back!");
+//                                showMessage("Success!", "Welcome back!");
                                 user = auth.getCurrentUser();
                                 goToNext();
                             } else {
-                                showMessage("Error", task.getException() != null ? task.getException().getLocalizedMessage() : "Error while signing in. Please check internet connection.");
+                                showMessage(getString(R.string.error), task.getException() != null ? task.getException().getLocalizedMessage() : getString(R.string.signing_in_error));
                             }
                         }
                     });
         } else {
-            showMessage("Sign in error!", "Please provide a valid email-password pair.");
+            showMessage(getString(R.string.sign_in_error), getString(R.string.valid_email_password));
         }
     }
 
@@ -67,26 +67,16 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
-                                showMessage("Success!", "Welcome aboard!");
                                 user = auth.getCurrentUser();
                                 goToNext();
                             } else {
-                                showMessage("Error", task.getException() != null ? task.getException().getLocalizedMessage() : "Error while signing up. Please check internet connection.");
+                                showMessage("Error", task.getException() != null ? task.getException().getLocalizedMessage() : getString(R.string.signing_up_error));
                             }
                         }
                     });
         } else {
-            showMessage("Sign up error!", "Please provide a valid email-password pair.");
+            showMessage(getString(R.string.sign_up_error), getString(R.string.valid_email_password));
         }
-    }
-
-    public void logOut(View view) {
-        if (user != null) {
-            auth.signOut();
-            showMessage("Exit!","User signed out.");
-            return;
-        }
-        showMessage("Info", "User already signed out.");
     }
 
     void showMessage(String title, String message) {
@@ -102,4 +92,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, Stories.class);
         startActivity(intent);
     }
+
+    public void inform(View view) {
+        showMessage(getString(R.string.info),getString(R.string.produced_by));
+    }
+
 }

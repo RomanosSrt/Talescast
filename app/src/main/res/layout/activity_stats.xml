@@ -36,7 +36,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="50dp"
-                android:text="Your Listening Stats"
+                android:text="@string/your_listening_stats"
                 android:textColor="@color/white"
                 android:textSize="24sp"
                 android:textStyle="bold" />
@@ -46,7 +46,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
-                android:text="Last Played: -"
+                android:text="@string/last_played"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="italic" />
@@ -57,7 +57,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="4dp"
-                android:text="🎧 Times Each Tale Was Played"
+                android:text="@string/times_each_tale_was_played"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -75,7 +75,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
                 android:layout_marginBottom="4dp"
-                android:text="📖 Times Each Tale Was Read"
+                android:text="@string/times_each_tale_was_read"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold" />

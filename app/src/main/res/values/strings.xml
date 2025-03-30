@@ -1,3 +1,30 @@
 <resources>
     <string name="app_name">Talescast</string>
+    <string name="main_instructions">Please enter your e-mail and password to Sign up or Sign in</string>
+    <string name="password">Password</string>
+    <string name="sign_in">Sign In</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="email" translatable="false">Email</string>
+    <string name="main_title">Grimm Brothers Tales</string>
+    <string name="castle">Castle</string>
+    <string name="info" translatable="false">Info</string>
+    <string name="tales">Tales</string>
+    <string name="choose_story">Choose from our story collection.</string>
+    <string name="more_to_come">More stories to come…</string>
+    <string name="signing_in_error">Error while signing in. Please check internet connection.</string>
+    <string name="error">Error</string>
+    <string name="sign_in_error">Sign in error!</string>
+    <string name="valid_email_password">Please provide a valid email-password pair.</string>
+    <string name="sign_up_error">Sign up error!</string>
+    <string name="signing_up_error">Error while signing up. Please check internet connection.</string>
+    <string name="tale_error">Something went wrong with your tale.</string>
+    <string name="credentials_error">Something went wrong with your credentials.</string>
+    <string name="data_error">Error loading data.</string>
+    <string name="play_pause" translatable="false">Play/Pause</string>
+    <string name="produced_by">Created by students: CHARIDIS MARIOS MPPL2336 &amp; SARANTIDIS ROMANOS MPPL2327</string>
+    <string name="year_written">"Year written: "</string>
+    <string name="your_listening_stats">Your Listening Stats</string>
+    <string name="last_played">Last Played: -</string>
+    <string name="times_each_tale_was_played">🎧 Times Each Tale Was Played</string>
+    <string name="times_each_tale_was_read">📖 Times Each Tale Was Read</string>
 </resources>

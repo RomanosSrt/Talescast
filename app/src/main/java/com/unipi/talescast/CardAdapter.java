@@ -38,13 +38,12 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
     public void onBindViewHolder(@NonNull CardViewHolder holder, int position) {
         CardModel item = cardList.get(position);
         holder.title.setText(item.title);
-        holder.description.setText(item.description);
         if (item.image != null && !item.image.isEmpty()) {
             byte[] imageBytes = Base64.decode(item.image, Base64.DEFAULT);
             Bitmap bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
             holder.image.setImageBitmap(bitmap);
         } else {
-            holder.image.setImageResource(R.drawable.placeholder); // Optional fallback
+            holder.image.setImageResource(R.drawable.placeholder);
         }
         holder.itemView.setOnClickListener(v -> listener.onItemClick(item));
     }
@@ -56,13 +55,12 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
 
     public static class CardViewHolder extends RecyclerView.ViewHolder {
         ImageView image;
-        TextView title, description;
+        TextView title;
 
         public CardViewHolder(@NonNull View itemView) {
             super(itemView);
             image = itemView.findViewById(R.id.itemImage);
             title = itemView.findViewById(R.id.itemTitle);
-            description = itemView.findViewById(R.id.itemDesc);
         }
     }
 

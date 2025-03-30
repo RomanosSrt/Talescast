@@ -25,4 +25,6 @@
     <string name="last_played">Τελευταία αναπαραγωγή: -</string>
     <string name="times_each_tale_was_played">🎧 Αναπαραγωγές ανά παραμύθι</string>
     <string name="times_each_tale_was_read">📖 Αναγνώσεις ανά παραμύθι</string>
+    <string name="background_image">Εικόνα Παρασκηνίου</string>
+    <string name="analytics_btn">Κουμπί στατιστικών</string>
 </resources>

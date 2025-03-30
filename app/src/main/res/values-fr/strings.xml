@@ -25,4 +25,6 @@
     <string name="last_played">Dernier joué: -</string>
     <string name="times_each_tale_was_played">🎧 Lectures par conte de fées</string>
     <string name="times_each_tale_was_read">📖 Lectures par conte de fées</string>
+    <string name="background_image">"Image d'arrière-plan "</string>
+    <string name="analytics_btn">"Bouton Statistiques "</string>
 </resources>

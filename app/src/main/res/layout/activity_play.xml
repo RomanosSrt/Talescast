@@ -83,7 +83,7 @@
                 android:layout_marginBottom="12dp"
                 android:fontFamily="cursive"
                 android:textAlignment="center"
-                android:textColor="#000000"
+                android:textColor="@color/white"
                 android:textSize="34sp"
                 android:textStyle="bold" />
 
@@ -115,8 +115,8 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="20dp"
                 android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="20sp" />
+                android:textColor="@color/white"
+                android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/storyText"

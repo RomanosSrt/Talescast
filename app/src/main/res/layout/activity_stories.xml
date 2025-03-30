@@ -12,8 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/mainbg"
-        android:alpha="0.2" />
+        android:src="@drawable/mainbg"/>
 
     <LinearLayout
         android:id="@+id/main"
@@ -60,7 +59,7 @@
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
             android:text="@string/choose_story"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold" />
 

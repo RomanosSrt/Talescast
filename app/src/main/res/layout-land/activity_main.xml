@@ -38,7 +38,7 @@
         android:textSize="48sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.521"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.047" />
@@ -52,13 +52,14 @@
         android:hint="Email"
         android:inputType="textEmailAddress"
         android:textAlignment="center"
+        android:textColor="#000000"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.273"
+        app:layout_constraintHorizontal_bias="0.281"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.62" />
+        app:layout_constraintVertical_bias="0.634" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -74,7 +75,7 @@
             android:id="@+id/signUpButton"
             android:layout_width="170dp"
             android:layout_height="70dp"
-            android:layout_marginEnd="88dp"
+            android:layout_marginEnd="16dp"
             android:backgroundTint="#891C1C"
             android:fontFamily="cursive"
             android:onClick="signUp"
@@ -91,7 +92,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
             app:rippleColor="#F0F0F0" />
 
         <Button
@@ -113,10 +113,9 @@
             app:iconTint="#F0F0F0"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/signUpButton"
-            app:layout_constraintHorizontal_bias="0.471"
+            app:layout_constraintHorizontal_bias="0.133"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
             app:rippleColor="#F0F0F0" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -129,23 +128,24 @@
         android:hint="Password"
         android:inputType="textPassword"
         android:textAlignment="center"
+        android:textColor="#000000"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.832"
+        app:layout_constraintHorizontal_bias="0.789"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.62" />
 
     <TextView
         android:id="@+id/textViewIntro"
-        android:layout_width="546dp"
+        android:layout_width="642dp"
         android:layout_height="49dp"
         android:layout_margin="10px"
         android:background="@color/white"
         android:backgroundTint="#4EF0F0F0"
         android:fontFamily="serif"
-        android:text="Please enter your e-mail and password to Sign in "
+        android:text="Please enter your e-mail and password to Sign up or Sign in"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textColorLink="#FFFFFF"
@@ -153,32 +153,34 @@
         android:textStyle="normal|bold"
         app:layout_constraintBottom_toTopOf="@+id/usernameEditText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.543"
+        app:layout_constraintHorizontal_bias="0.483"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/email_icon"
         android:layout_width="53dp"
         android:layout_height="45dp"
+        android:layout_marginEnd="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.155"
+        app:layout_constraintEnd_toStartOf="@+id/usernameEditText"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.612"
+        app:layout_constraintVertical_bias="0.625"
         app:srcCompat="@drawable/email" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/password_icon"
         android:layout_width="54dp"
         android:layout_height="48dp"
+        android:layout_marginEnd="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/backgroundImage"
-        app:layout_constraintHorizontal_bias="0.627"
+        app:layout_constraintEnd_toStartOf="@+id/passwordEditText"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.622"
+        app:layout_constraintVertical_bias="0.63"
         app:srcCompat="@drawable/padlock" />
 
 

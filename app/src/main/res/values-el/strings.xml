@@ -21,4 +21,8 @@
     <string name="credentials_error">Κάποιο σφάλμα προέκυψε με τα στοιχεία σας.</string>
     <string name="data_error">Σφάλμα φόρτωσης δεδομένων.</string>
     <string name="year_written">Γράφτηκε το:</string>
+    <string name="your_listening_stats">Τα στατιστικά σας</string>
+    <string name="last_played">Τελευταία αναπαραγωγή: -</string>
+    <string name="times_each_tale_was_played">🎧 Αναπαραγωγές ανά παραμύθι</string>
+    <string name="times_each_tale_was_read">📖 Αναγνώσεις ανά παραμύθι</string>
 </resources>

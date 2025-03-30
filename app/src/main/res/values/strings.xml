@@ -23,4 +23,8 @@
     <string name="play_pause" translatable="false">Play/Pause</string>
     <string name="produced_by">Created by students: CHARIDIS MARIOS MPPL2336 &amp; SARANTIDIS ROMANOS MPPL2327</string>
     <string name="year_written">"Year written: "</string>
+    <string name="your_listening_stats">Your Listening Stats</string>
+    <string name="last_played">Last Played: -</string>
+    <string name="times_each_tale_was_played">🎧 Times Each Tale Was Played</string>
+    <string name="times_each_tale_was_read">📖 Times Each Tale Was Read</string>
 </resources>

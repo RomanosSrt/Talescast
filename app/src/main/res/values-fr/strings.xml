@@ -21,4 +21,8 @@
     <string name="credentials_error">Une erreur s\'est produite avec vos identifiants.</string>
     <string name="data_error">Erreur de chargement des données.</string>
     <string name="year_written">Écrit en:</string>
+    <string name="your_listening_stats">Votre statistiques</string>
+    <string name="last_played">Dernier joué: -</string>
+    <string name="times_each_tale_was_played">🎧 Lectures par conte de fées</string>
+    <string name="times_each_tale_was_read">📖 Lectures par conte de fées</string>
 </resources>

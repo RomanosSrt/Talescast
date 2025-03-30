@@ -1,15 +1,13 @@
 package com.unipi.talescast;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,8 +23,9 @@ import java.util.List;
 public class Stories extends AppCompatActivity {
     DatabaseReference dbRef;
     RecyclerView recyclerView;
-    List<CardModel> cardItems;
+    public List<CardModel> cardItems;
     CardAdapter adapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,19 +36,17 @@ public class Stories extends AppCompatActivity {
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 
         cardItems = new ArrayList<>();
-        adapter = new CardAdapter(this, cardItems, new CardAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(CardModel item) {
-                Intent intent = new Intent(Stories.this, PlayActivity.class);
-                intent.putExtra("card", item);
-                startActivity(intent);
-            }
+        adapter = new CardAdapter(this, cardItems, item -> {
+            Intent intent = new Intent(Stories.this, PlayActivity.class);
+            intent.putExtra("card", item);
+            startActivity(intent);
         });
         recyclerView.setAdapter(adapter);
 
         dbRef = FirebaseDatabase.getInstance().getReference("cards");
 
         dbRef.addValueEventListener(new ValueEventListener() {
+            @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 cardItems.clear();
@@ -65,5 +62,10 @@ public class Stories extends AppCompatActivity {
                 Toast.makeText(Stories.this, "Error loading data.", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public void showStats(View view) {
+        Intent intent = new Intent(Stories.this, Stats.class);
+        startActivity(intent);
     }
 }

@@ -1,5 +1,6 @@
 package com.unipi.talescast;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -13,27 +14,35 @@ import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.StyleSpan;
 import android.util.Base64;
-import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ServerValue;
+
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 public class PlayActivity extends AppCompatActivity {
-    CardModel cardSelected;
-    TextToSpeech narrator;
-    Button playButton;
-    TextView titleText,lyrics;
-    SeekBar seekBar;
-    boolean stop = false;
-    int playFrom;
-    String[] storyTable;
+    private CardModel cardSelected;
+    private TextToSpeech narrator;
+    private TextView lyrics;
+    private SeekBar seekBar;
+    private boolean stop = false;
+    private String[] storyTable;
+    private final DatabaseReference db = FirebaseDatabase.getInstance().getReference();
+    private final FirebaseAuth creds = FirebaseAuth.getInstance();
+    private String userId;
+    private final Map<String, Object> data = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,46 +50,53 @@ public class PlayActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_play);
         seekBar = findViewById(R.id.seekBar);
-        playButton = findViewById(R.id.playButton);
-        titleText = findViewById(R.id.titleText);
+        Button playButton = findViewById(R.id.playButton);
+        TextView titleText = findViewById(R.id.titleText);
         lyrics = findViewById(R.id.storyText);
         cardSelected = (CardModel) getIntent().getSerializableExtra("card");
 
+        if (creds.getCurrentUser() != null)
+            userId = creds.getCurrentUser().getUid();
+        else {
+            Toast.makeText(this, "Something went wrong with your credentials.", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(PlayActivity.this, MainActivity.class);
+            startActivity(intent);
+        }
+
+
+
 
         if (cardSelected != null) {
-            storyTable = cardSelected.story.trim().split("(?<=[:,.?!])\\s+");
+            storyTable = cardSelected.story.trim().split("(?<=[:;,.?!])\\s+");
             titleText.setText(cardSelected.title);
             lyrics.setText(cardSelected.story);
             seekBar.setMax(storyTable.length-1);
             setImage(cardSelected.image);
         } else {
-            finish();
+            Toast.makeText(this, "Something went wrong with your tale.", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(PlayActivity.this, Stories.class);
+            startActivity(intent);
         }
+        registerEvent(cardSelected.title, "readTales");
 
-        narrator = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
-            @Override
-            public void onInit(int i) {
-                if (i != TextToSpeech.ERROR) {
-                    narrator.setLanguage(new Locale("el", "GR"));
-                }
+        narrator = new TextToSpeech(this, i -> {
+            if (i != TextToSpeech.ERROR) {
+                narrator.setLanguage(new Locale("el", "GR"));
             }
         });
 
 
-        playButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (seekBar.getProgress() == seekBar.getMax())
-                    seekBar.setProgress(0);
+        playButton.setOnClickListener(view -> {
+            if (seekBar.getProgress() == seekBar.getMax())
+                seekBar.setProgress(0);
 
-                if (!stop) {
-                    narrate();
-                }
-                else {
-                    narrator.stop();
-                }
-                stop = !stop;
+            if (!stop) {
+                narrate();
             }
+            else {
+                narrator.stop();
+            }
+            stop = !stop;
         });
 
         narrator.setOnUtteranceProgressListener(new UtteranceProgressListener() {
@@ -93,7 +109,6 @@ public class PlayActivity extends AppCompatActivity {
                     SpannableString spannable = new SpannableString(lyrics.getText());
                     spannable.setSpan(new ForegroundColorSpan(Color.parseColor("#aaaaaa")), 0, lyrics.getText().length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                     spannable.setSpan(new StyleSpan(Typeface.NORMAL), 0, lyrics.getText().length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-
                     spannable.setSpan(new ForegroundColorSpan(Color.parseColor("#FFFFFF")), findLyrics, findLyrics+storyTable[index].length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                     spannable.setSpan(new StyleSpan(Typeface.BOLD), findLyrics, findLyrics+storyTable[index].length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                     lyrics.setText(spannable);
@@ -118,13 +133,15 @@ public class PlayActivity extends AppCompatActivity {
                     new Handler().postDelayed(() -> {
                         Spannable spannable = new SpannableString(lyrics.getText());
                         spannable.setSpan(
-                                new ForegroundColorSpan(Color.BLACK),
+                                new ForegroundColorSpan(Color.parseColor("#aaaaaa")),
                                 0,
                                 spannable.length(),
                                 Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
                         );
                         lyrics.setText(spannable);
                     }, 5000);
+                    registerEvent(cardSelected.title, "listenedTales");
+                    db.child("users").child("user_"+userId).child("lastPlayed").setValue(cardSelected.title);
                 }
             }
 
@@ -164,10 +181,16 @@ public class PlayActivity extends AppCompatActivity {
     }
 
     private void narrate() {
-        playFrom = seekBar.getProgress();
+        int playFrom = seekBar.getProgress();
         for (int i = playFrom; i < storyTable.length; i++) {
             String id = "sentence_" + i;
             narrator.speak(storyTable[i], TextToSpeech.QUEUE_ADD, null, id);
         }
     }
+
+    private void registerEvent(String taleTitle, String eventName) {
+        data.put("count", ServerValue.increment(1));
+        db.child("users").child("user_"+userId).child(eventName).child(taleTitle).updateChildren(data);
+    }
+
 }

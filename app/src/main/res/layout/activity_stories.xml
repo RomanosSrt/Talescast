@@ -1,96 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/mainbg"
+    android:orientation="vertical"
+    android:padding="16dp"
     tools:context=".Stories">
 
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="343dp"
-        android:layout_height="543dp"
-        android:background="#325250"
-        android:padding="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.581" />
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="124dp"
-        android:layout_height="118dp"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.881"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/dragon" />
+    <!-- Top Buttons Section -->
 
 
-    <ImageView
-        android:id="@+id/imageBean"
-        android:layout_width="406dp"
-        android:layout_height="402dp"
-        android:alpha="0.1"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="@+id/recyclerView"
-        app:layout_constraintEnd_toEndOf="@+id/recyclerView"
-        app:layout_constraintHorizontal_bias="0.507"
-        app:layout_constraintStart_toStartOf="@+id/recyclerView"
-        app:layout_constraintTop_toTopOf="@+id/recyclerView"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/bean" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="showStats"
-        android:text="User Stats"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.086"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.074" />
+        android:layout_marginTop="50dp"
+        android:gravity="end"
+        android:orientation="horizontal"
+        android:paddingBottom="8dp">
 
-    <ImageButton
-        android:id="@+id/myImageButton"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        <TextView
+            android:id="@+id/screenTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="20dp"
+            android:layout_weight="1"
+            android:fontFamily="cursive"
+            android:text="Tales"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="34sp"
+            android:textStyle="bold" />
 
-        android:background="@android:color/transparent"
-        android:contentDescription="The description"
-        android:onClick="showStats"
-        android:scaleType="fitXY"
-        android:src="@drawable/statsbtn"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.955"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.019" />
+        <!-- Optional text button -->
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:orientation="horizontal"
+        android:paddingBottom="8dp">
+        <!-- Image button -->
 
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:text="Choose from our story collection."
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/myImageButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@android:color/transparent"
+            android:onClick="showStats"
+            android:scaleType="fitXY"
+            android:src="@drawable/statsbtn" />
+    </LinearLayout>
+
+    <!-- Optional dragon image -->
+
+    <!-- RecyclerView section with background bean image -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_weight="1">
+
+        <ImageView
+            android:id="@+id/imageBean"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0.1"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bean" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/ic_launcher_background"
+            android:padding="10dp" />
+    </FrameLayout>
+
+    <!-- Footer Text -->
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
         android:text="More stories to come..."
+        android:textAlignment="center"
         android:textColor="#FFFFFF"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.901" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:textStyle="bold" />
+</LinearLayout>

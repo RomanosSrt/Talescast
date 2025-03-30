@@ -32,12 +32,14 @@
             android:text="Tales"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="34sp"
+            android:textSize="48sp"
             android:textStyle="bold" />
 
         <!-- Optional text button -->
     </LinearLayout>
+
     <LinearLayout
+        android:id="@+id/size"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="end"
@@ -53,6 +55,7 @@
             android:layout_weight="1"
             android:text="Choose from our story collection."
             android:textColor="@color/white"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <ImageButton

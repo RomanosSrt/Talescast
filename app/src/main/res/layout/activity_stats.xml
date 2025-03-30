@@ -8,11 +8,13 @@
     tools:context=".Stats">
 
     <ImageView
-        android:id="@+id/backgroundImage"
+        android:id="@+id/bluebg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:alpha="0.2"
-        android:scaleType="centerCrop" />
+        android:scaleType="centerCrop"
+        android:src="@drawable/bluebg"
+        />
 
     <ScrollView
         android:id="@+id/contentScroll"

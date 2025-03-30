@@ -60,7 +60,7 @@ public class PlayActivity extends AppCompatActivity {
         if (creds.getCurrentUser() != null)
             userId = creds.getCurrentUser().getUid();
         else {
-            Toast.makeText(this, "Something went wrong with your credentials.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.credentials_error), Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(PlayActivity.this, MainActivity.class);
             startActivity(intent);
         }
@@ -75,7 +75,7 @@ public class PlayActivity extends AppCompatActivity {
             seekBar.setMax(storyTable.length-1);
             setImage(cardSelected.image);
         } else {
-            Toast.makeText(this, "Something went wrong with your tale.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.tale_error), Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(PlayActivity.this, Stories.class);
             startActivity(intent);
         }
@@ -194,5 +194,4 @@ public class PlayActivity extends AppCompatActivity {
         data.put("count", ServerValue.increment(1));
         db.child("users").child("user_"+userId).child(eventName).child(taleTitle).updateChildren(data);
     }
-
 }

@@ -8,7 +8,6 @@
     android:layout_height="match_parent"
     tools:context=".Stories">
 
-    <!-- Background Image -->
     <ImageView
         android:id="@+id/backgroundImage"
         android:layout_width="match_parent"
@@ -17,14 +16,12 @@
         android:src="@drawable/mainbg_land"
         android:alpha="0.2"/>
 
-    <!-- Foreground content -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="16dp">
 
-        <!-- Top bar -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -55,7 +52,6 @@
                 android:scaleType="fitXY" />
         </LinearLayout>
 
-        <!-- Subtitle -->
         <TextView
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
@@ -65,7 +61,6 @@
             android:textColor="@color/white"
             android:textStyle="bold" />
 
-        <!-- RecyclerView with background image -->
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -81,7 +76,6 @@
                 android:background="@color/ic_launcher_background" />
         </FrameLayout>
 
-        <!-- Footer -->
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
@@ -89,7 +83,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="8dp"
-            android:text="More stories to come..."
+            android:text="@string/more_to_come"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
             android:textStyle="bold" />

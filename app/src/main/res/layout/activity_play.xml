@@ -30,24 +30,26 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <LinearLayout
+            android:id="@+id/color"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
             android:orientation="vertical"
             android:padding="16dp"
-            android:gravity="center_horizontal">
+            android:textAlignment="center">
 
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="400dp"
-                android:layout_height="496dp"
+                android:layout_width="437dp"
+                android:layout_height="491dp"
                 android:layout_centerInParent="true">
 
                 <!-- Background Frame -->
 
                 <ImageView
                     android:id="@+id/imageFrame"
-                    android:layout_width="393dp"
-                    android:layout_height="381dp"
+                    android:layout_width="344dp"
+                    android:layout_height="496dp"
                     android:adjustViewBounds="true"
                     android:scaleType="fitCenter"
                     app:layout_constraintBottom_toBottomOf="@+id/taleImage"
@@ -69,33 +71,40 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
             <TextView
                 android:id="@+id/titleText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:layout_marginBottom="40dp"
+                android:layout_width="359dp"
+                android:layout_height="57dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="12dp"
+                android:fontFamily="cursive"
                 android:text="Title Here"
-                android:textSize="24sp"
+                android:textAlignment="center"
+                android:textColor="#F4F4F4"
+                android:textSize="34sp"
                 android:textStyle="bold" />
 
             <SeekBar
                 android:id="@+id/seekBar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:layout_marginBottom="30dp" />
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp" />
 
             <Button
                 android:id="@+id/playButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Play"
-                android:layout_marginTop="24dp" />
+                android:layout_width="177dp"
+                android:layout_height="59dp"
+                android:layout_marginTop="15dp"
+                android:text="Play/Pause"
+                android:textSize="16sp"
+                app:icon="@drawable/lamp"
+                app:iconSize="24dp" />
 
             <TextView
                 android:id="@+id/storyText"

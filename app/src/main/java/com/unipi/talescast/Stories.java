@@ -2,6 +2,7 @@ package com.unipi.talescast;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -33,7 +34,12 @@ public class Stories extends AppCompatActivity {
         setContentView(R.layout.activity_stories);
 
         recyclerView = findViewById(R.id.recyclerView);
+        int orientation = getResources().getConfiguration().orientation;
+
+
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+        if (orientation == Configuration.ORIENTATION_LANDSCAPE)
+            recyclerView.setLayoutManager(new GridLayoutManager(this, 4));
 
         cardItems = new ArrayList<>();
         adapter = new CardAdapter(this, cardItems, item -> {

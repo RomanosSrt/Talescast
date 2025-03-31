@@ -1,6 +1,7 @@
 package com.unipi.talescast;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -55,7 +56,6 @@ public class PlayActivity extends AppCompatActivity {
         ImageButton playButton = findViewById(R.id.playButton);
         TextView titleText = findViewById(R.id.titleText);
         lyrics = findViewById(R.id.storyText);
-        year = findViewById(R.id.yeartextView);
         cardSelected = (CardModel) getIntent().getSerializableExtra("card");
 
         if (creds.getCurrentUser() != null)
@@ -68,7 +68,7 @@ public class PlayActivity extends AppCompatActivity {
 
 
 
-
+        int orientation = getResources().getConfiguration().orientation;
         if (cardSelected != null) {
             storyTable = cardSelected.story.trim().split("(?<=[:;,.?!])\\s+");
             titleText.setText(cardSelected.title);
@@ -76,7 +76,10 @@ public class PlayActivity extends AppCompatActivity {
             seekBar.setMax(storyTable.length-1);
             setImage(cardSelected.image);
             String buffer = getString(R.string.year_written) + cardSelected.year;
-            year.setText(buffer);
+            if (orientation != Configuration.ORIENTATION_LANDSCAPE) {
+                year = findViewById(R.id.yeartextView);
+                year.setText(buffer);
+            }
         } else {
             Toast.makeText(this, getString(R.string.tale_error), Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(PlayActivity.this, Stories.class);

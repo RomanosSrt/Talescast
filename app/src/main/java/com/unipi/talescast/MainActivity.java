@@ -36,6 +36,9 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
         auth = FirebaseAuth.getInstance();
+        if (auth.getCurrentUser() != null) {
+            auth.signOut();
+        }
     }
 
     public void signIn(View view) {

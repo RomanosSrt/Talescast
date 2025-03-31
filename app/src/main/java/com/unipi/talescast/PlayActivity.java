@@ -76,6 +76,7 @@ public class PlayActivity extends AppCompatActivity {
             seekBar.setMax(storyTable.length-1);
             setImage(cardSelected.image);
             String buffer = getString(R.string.year_written) + cardSelected.year;
+            registerEvent(cardSelected.title, "readTales");
             if (orientation != Configuration.ORIENTATION_LANDSCAPE) {
                 year = findViewById(R.id.yeartextView);
                 year.setText(buffer);
@@ -85,7 +86,6 @@ public class PlayActivity extends AppCompatActivity {
             Intent intent = new Intent(PlayActivity.this, Stories.class);
             startActivity(intent);
         }
-        registerEvent(cardSelected.title, "readTales");
 
         narrator = new TextToSpeech(this, i -> {
             if (i != TextToSpeech.ERROR) {

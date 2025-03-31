@@ -84,12 +84,13 @@ public class Stats extends AppCompatActivity {
     }
 
     private void showMockStats() {
-        if (userData == null || userData.getListenedTales() == null) return;
-
-        configChart(userData.getListenedTales(), "Listened tales", "#177bbb", playCountChart);
+        if (userData == null || userData.getReadTales() == null) return;
         configChart(userData.getReadTales(), "Read tales", "#cc8405", readCountChart);
-        // Update the last played text
-        lastPlayedText.setText("Last Played: " + userData.getLastPlayed());
+
+        if (userData.getListenedTales() == null) return;
+        configChart(userData.getListenedTales(), "Listened tales", "#177bbb", playCountChart);
+        String buffer = "Last Played: " + ((!userData.getLastPlayed().isEmpty()) ? userData.getLastPlayed() : "None") ;
+        lastPlayedText.setText(buffer);
     }
 
     private void setupChart(BarChart chart, String[] labels) {

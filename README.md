@@ -50,7 +50,7 @@ Talescast supports:
 
 ## 🧑‍💻 Created By
 
-This app was designed and built by MSc Informatics students as part of an academic project:
+This app was designed and built by MSc Informatics student as part of an academic project:
 
 **Sarantidis Romanos** (MPPL2327)
 

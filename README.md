@@ -44,8 +44,7 @@ Here’s what to expect when navigating the app:
 
 Talescast supports:
 - 🇬🇷 Greek
-- 🇫🇷 French
-- 🇬🇧 English (default)
+
 
 ---
 
@@ -53,14 +52,13 @@ Talescast supports:
 
 This app was designed and built by MSc Informatics students as part of an academic project:
 
-**Charidis Marios** (MPPL2336)  
 **Sarantidis Romanos** (MPPL2327)
 
 ---
 
-## 📸 Screenshots (Coming Soon)
+## 📸 Interface
 
-You’ll be able to see how it works with real examples soon. Stay tuned!
+![TalesCast](./assets/TalesCast.gif)
 
 ---
 
